@@ -1,0 +1,143 @@
+ul {
+    font-family: Calibri;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d4d4d4;
+    font-size: 2em;
+  }
+  
+  li {
+    float: left;
+  } 
+  
+  li a {
+    display: block;
+    color: rgb(41, 41, 41);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li img{
+    display: block;
+    width: 90px;
+    padding: 8px;
+  }
+  
+.active{
+    background-color: #969696;
+    font-weight: bolder;
+}
+
+  li a:hover {
+    background-color: #8a1010;
+    color: white;
+    font-weight: bolder;
+}
+
+/* .container {
+  margin: auto;
+} */
+
+/* .center {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+} */
+
+.center button {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 45%;
+  margin-right: 45%;
+  background-color: #f7c1d9;
+  font-weight: bold;
+  margin: 30px;
+}
+
+.center {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  /* border: 2px dashed grey; */
+  margin: 20px;
+  padding: 20px;
+  border-radius: 30px;
+}
+.space{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.tableRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.chair{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  align-self: center;
+  background-color: #7e7e7e;
+}
+
+.table {
+  width: 90px;
+  height: 45px;
+  display: flex;
+  background-color: #7e7e7e;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.tdesk {
+  width: 150px;
+  height: 45px;
+  display: flex;
+  background-color: #7e7e7e;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.tableEmpty {
+  width: 50px;
+  height: 30px;
+  display: flex;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+/* .messages{
+  background-color: white;
+  overflow:hidden;
+  font-size: 1em;
+}
+.messages li{
+  display: block;
+  float: initial;
+  color: rgb(36, 36, 36);
+  width: 500px;
+  background-color: #fcd2e6;
+
+} */
+
+/* .chatArea{
+  width: 500px;
+  display: inline-block;
+  background-color: #f7c1d9;;
+  border-radius: 30px;
+} */
+
+/* input {
+  border-radius: 5px;
+  border: 2px solid #f7c1d9;
+  padding: 5px;
+} */
