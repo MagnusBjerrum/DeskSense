@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '../client'));
 
 app.use("/", userRoute);
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/pages/home.html'));
   
 });
