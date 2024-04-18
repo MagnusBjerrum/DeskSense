@@ -10,8 +10,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const host = 'localhost';
+const fs = require('fs');
 const path = require('path')
 const userRoute = require("./routes/userRoute");
+let tempData = []
 
 app.use(express.static(__dirname + '../client'));
 
@@ -38,7 +40,12 @@ app.get('/classroom', (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-  res.sendFile(path.join(__dirname, '../test.csv'));
+  appendToCSV(tempData).then(function(result) {
+    res.sendFile(path.join(__dirname, '../test.csv'));
+  })
+  .catch(function(err){
+    res.send(err)
+  });
   
 });
 
@@ -52,6 +59,21 @@ app.get('/global.css', (req, res) => {
   
 });
 
+function appendToCSV(data) {
+  const filePath = path.join(__dirname, '../test.csv');
+
+  // Prepare the data for appending to CSV
+  const csvData = data.map(entry => `${entry.time},${entry.value}`).join('\n');
+
+  // Append the data to the file
+  fs.appendFile(filePath, csvData, 'utf8', (err) => {
+    if (err) {
+      console.error('Error appending to CSV file:', err);
+    } else {
+      console.log('Data appended to CSV file successfully.');
+    }
+  });
+}
 
 // io.on('connection', (socket) => {
 //   socket.on('chat message', msg => {
@@ -66,6 +88,19 @@ app.get('/global.css', (req, res) => {
 app.get('/changeSeat', (req, res)=> {
   io.emit('seatChange', "Seat");
   res.send('Hello World');
+}) 
+
+app.post('/changeSeat', (req, res)=> {
+  let time = Date.now()
+  tempData.push({"time":time, "value": req.body.Prescence})
+  if(req.body.Prescence == 1){
+  io.emit('seatChange', 1); 
+  }
+  else {
+  io.emit('seatChange', 0);
+  }
+  // io.emit('seatChange', "Seat");
+  res.send(tempData);
 }) 
 
 http.listen(port, host, () => {

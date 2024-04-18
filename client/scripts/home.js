@@ -4,9 +4,9 @@ const messages = document.getElementById('messages');
 const input = document.getElementById('input');
 let username = "Anonymous"
 let seat1 = 0
-if(localStorage.getItem("Username") != null){
-   username = localStorage.getItem("Username")
-}
+// if(localStorage.getItem("Username") != null){
+//    username = localStorage.getItem("Username")
+// }
 
 socket.emit('user joined', username)
 
@@ -18,17 +18,17 @@ socket.emit('user joined', username)
 //   }
 // });
 
-function changeUsername(){
-  username = document.getElementById("username").value
-  if(!username == ""){
-    localStorage.setItem("Username", username)
-  }
-  else{
-    localStorage.setItem("Username", "Anonymous")
-  }
-  socket.emit("user joined", username)
-  document.getElementById("username").value = ''
-}
+// function changeUsername(){
+//   username = document.getElementById("username").value
+//   if(!username == ""){
+//     localStorage.setItem("Username", username)
+//   }
+//   else{
+//     localStorage.setItem("Username", "Anonymous")
+//   }
+//   socket.emit("user joined", username)
+//   document.getElementById("username").value = ''
+// }
 
 function sendChat(){
   if (input.value) {
@@ -45,15 +45,13 @@ socket.on('chat message', (msg) => {
 });
 
 socket.on('seatChange', (msg) => {
-  if(seat1 == 0) {
-    seat1 = 1
+  if(msg == 1) {
     document.getElementById("table2").style.backgroundColor  = "green"
   }
   else{
-    seat1 = 0
     document.getElementById("table2").style.backgroundColor = "#7e7e7e"
   }
-  document.getElementById("space1").innerHTML = seat1
+  // document.getElementById("space1").innerHTML = seat1
   console.log("SeatChange" + msg)
 });
 
